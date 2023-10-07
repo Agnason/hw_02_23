@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+
+
+    <div class="feedbacks" id="app">
+        <!-- выбираем модель мобильника для отзыва -->
+        <div class="createFeedback">
+            <template v-for="mobile in listOfMobiles">
+                <input type="radio" :value="mobile" v-model="selectedMobile">
+                <label>{{mobile}}</label><br>
+            </template>
+            <!-- поле отзыва -->
+            <input type="text" class="createFeedback-field" v-model="tempMessage">
+            <button class="createFeedback-btn" @click="addNewFeedback">Отправить
+                отзыв</button>
+        </div>
+        <!-- контейнер отзывов -->
+        <template v-for="feedback in feedbacks">
+            <h3>{{ feedback.product}}</h3>
+            <ul>
+                <li v-for="review in feedback.reviews"> {{ review.text }} </li>
+            </ul>
+        </template>
+    </div>
 </body>
+<!-- <script src="script01.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="script02.js"></script>
+
 </html>
